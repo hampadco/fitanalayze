@@ -1,0 +1,51 @@
+@model tbl_user
+<div class="CardCenter">
+
+    @if ( TempData["error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["error"]
+        </div>
+    }
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["success"]
+        </div>
+    }
+  
+
+
+    <form action="/client/login/Register" method="post" >
+
+        <select asp-for="Type"  >
+            <option value="ورزشکار" > ورزشکار </option>
+            <option value="مربی">مربی </option>
+        </select>
+        <input asp-for="Name" type="text" class="form-control mt-3" placeholder="نام "
+            required>
+             <input asp-for="Family" type="text" class="form-control mt-3" placeholder="نام خانوادگی"
+            required>
+
+             <input asp-for="Phone" type="number" class="form-control mt-3" placeholder="شماره تلفن"
+            required>
+       
+            <input  asp-for="Email"  type="text" class="form-control mt-3" placeholder="آدرس ایمیل (نام کاربری شما خواهد بود)"
+            required>
+        <input  asp-for="Password" type="password" class="form-control mt-3" placeholder="رمز عبور"
+            required>
+        <button type="submit" class="form-control btn btn-success mt-3 "> 
+           
+           ساخت حساب کاربری
+            </button>
+<br>
+<br>
+              <a href="/client/login/index" >ورود به حساب کاربری</a>
+    </form>
+  
+
+
+
+</div>
+
+

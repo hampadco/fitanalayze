@@ -1,0 +1,70 @@
+  <div class="CardCenter2" style="text-align: right !important;">
+<style>
+    th,td{
+        white-space: nowrap;
+    }
+</style>
+  
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-4">سبد خرید</h1>
+      <div class="table-responsive" style="overflow-y: scroll;">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>نام محصول</th>
+              <th>تعداد</th>
+              <th>قیمت واحد (تومان)</th>
+              <th>قیمت کل (تومان)</th>
+              <th>تاریخ خرید</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>محصول A</td>
+              <td>۲</td>
+              <td>۱۰۰۰۰</td>
+              <td>۲۰۰۰۰</td>
+              <td>۲۹/۴/۱۴۰۲</td>
+            </tr>
+            <tr>
+              <td>محصول B</td>
+              <td>۱</td>
+              <td>۱۵۰۰۰</td>
+              <td>۱۵۰۰۰</td>
+              <td>۲۸/۴/۱۴۰۲</td>
+            </tr>
+            <tr>
+              <td>محصول C</td>
+              <td>۳</td>
+              <td>۸۰۰۰</td>
+              <td>۲۴۰۰۰</td>
+              <td>۲۷/۴/۱۴۰۲</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // تبدیل اعداد به فارسی
+  const elements = document.querySelectorAll('table td');
+  elements.forEach(element => {
+    if (!isNaN(element.textContent)) {
+      element.textContent = Number(element.textContent).toLocaleString('fa');
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+  </div>

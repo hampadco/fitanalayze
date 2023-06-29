@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no">
+    <meta name="description" content="Suha - Multipurpose Ecommerce Mobile HTML Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#100DD1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- The above tags *must* come first in the head, any other head content must come *after* these tags -->
+    <!-- Title -->
+     <link rel="icon" href="/img/icons/icon-72x72.png">
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/img/icons/icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/icon-180x180.png">
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/brands.min.css">
+    <link rel="stylesheet" href="/css/solid.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- Web App Manifest -->
+ 
+  </head>
+ 
+
+  <body>
+     @using System.Security.Claims
+    @{
+    var user =Context.User;
+    var familyClaim = user.FindFirst("Family");
+    var familyValue = familyClaim?.Value;
+
+    //image
+    var imageClaim = user.FindFirst("Image");
+    var imageValue = imageClaim?.Value;
+}
+
+   
+    <!-- Header Area -->
+    <div class="header-area" id="headerArea" >
+      <div class="container h-100 d-flex align-items-center justify-content-between d-flex rtl-flex-d-row-r">
+        <!-- Logo Wrapper -->
+
+        <div class="logo-wrapper"><a href="/"><img src="/img/core-img/logo-small.png" alt="" style="width: 40px;"></a></div>
+        <div class="navbar-logo-container d-flex align-items-center mt-1">
+          <!-- Cart Icon -->
+         
+        
+          <h6>analyze</h6> <h5>Fit</h5>
+          </div>
+          <!-- Navbar Toggler -->
+          <div class="suha-navbar-toggler ms-2" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas">
+            <div><span></span><span></span><span></span></div>
+          </div>
+
+       </div>
+      </div>
+    </div>
+    <div class="offcanvas offcanvas-start suha-offcanvas-wrap" tabindex="-1" id="suhaOffcanvas" aria-labelledby="suhaOffcanvasLabel">
+      <!-- Close button-->
+      <button class="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <!-- Offcanvas body-->
+      <div class="offcanvas-body">
+        <!-- Sidenav Profile-->
+
+        <div class="sidenav-profile">
+          @if(User.Identity.IsAuthenticated)
+            { 
+              <div class="user-profile"><img src="/img/core-img/@imageValue" alt=""></div>
+              <div class="user-info">
+                <h5 class="user-name mb-1 text-white">@Context.User.FindFirstValue(ClaimTypes.Name)  @familyValue </h5>
+                @* <p class="available-balance text-white"> موجودی <span class="counter">5000</span> <span>تومان</span> </p> *@
+              </div>
+           }else
+           {
+                      <div class="user-profile"><img src="/img/core-img/logo-small.png" alt=""></div>
+
+           }
+        </div>
+
+
+       
+ 
+ 
+        <!-- Sidenav Nav-->
+        <ul class="sidenav-nav ps-0">
+
+
+           @* Coach test *@
+               @* <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> داشبورد</a></li>
+               <li><a href="profile.html"><i class="fa-solid fa-user"></i>پروفایل من</a></li>
+               <li><a href="notifications.html"><i class="fa-solid fa-bell lni-tada-effect"></i>اعلانات<span class="ms-1 badge badge-warning">3</span></a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  افزودن مکمل ها</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> افزودن برنامه ها</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> برنامه برای کاربران</a></li>
+                <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> لیست  کاربران</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> تیکت ها</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  پادکست ها </a></li>
+                <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  خریدها </a></li> *@
+
+        @* end Coach clean *@
+
+
+
+
+
+
+
+
+          @if(User.Identity.IsAuthenticated)
+            {
+           
+              if (User.IsInRole("ورزشکار"))
+               {
+                   <li><a href="/user/dashboard/index"><i class="fa-solid fa-magnifying-glass-minus"></i> داشبورد</a></li>
+
+                  <li><a href="/user/profile/index"><i class="fa-solid fa-user"></i>پروفایل من</a></li>
+                  <li><a href="/user/tickets/index"><i class="fa-solid fa-bell lni-tada-effect"></i>اعلانات<span class="ms-1 badge badge-warning">3</span></a></li>
+
+                  <li class="suha-dropdown-menu"><a href="#"><i class="fa-solid fa-list"></i> برنامه من</a>
+                    <ul>
+                      <li><a href="/user/myplane/plane"> برنامه حرکات ورزشی</a></li>
+                      <li><a href="/user/myplane/suppelment"> برنامه مصرف مکمل ها</a></li>
+                      <li><a href="/user/dashboard/index">روند اجرای برنامه </a></li>
+                    
+                    </ul>
+                  </li>
+
+                  <li><a href="/user/buy/index"><i class="fa-solid fa-magnifying-glass-minus"></i> خریدها</a></li>
+                  <li><a href="/user/tickets/index"><i class="fa-solid fa-magnifying-glass-minus"></i> تیکت ها</a></li>
+            
+
+               }
+
+               if (User.IsInRole("مربی"))
+               {
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> داشبورد</a></li>
+
+               <li><a href="profile.html"><i class="fa-solid fa-user"></i>پروفایل من</a></li>
+               <li><a href="notifications.html"><i class="fa-solid fa-bell lni-tada-effect"></i>اعلانات<span class="ms-1 badge badge-warning">3</span></a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  افزودن مکمل ها</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> افزودن برنامه ها</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> برنامه برای کاربران</a></li>
+                <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> لیست  کاربران</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i> تیکت ها</a></li>
+               <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  پادکست ها </a></li>
+                <li><a href="/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  خریدها </a></li>
+
+
+
+               }
+
+            }else
+            {
+               <li><a href="/client/login/index"><i class="fa-solid fa-user"></i> ورود | ثبت نام</a></li>
+          
+            }
+
+             <li><a href="/client/coach/listcoach"><i class="fa-solid fa-magnifying-glass-minus"></i>  لیست مربیان</a></li>
+              <li><a href="/client/padcast/index"><i class="fa-solid fa-radio"></i>  لیست پادکست ها</a></li>
+               <li><a href="/client/Product/listProduct"><i class="fa-solid fa-shop"></i>  لیست محصولات</a></li>
+             <li><a href="/client/movements/category"><i class="fa-solid fa-search"></i> بانک حرکات </a></li>
+
+
+
+
+
+
+            @if(User.Identity.IsAuthenticated)
+            {
+                         <li><a href="/user/dashboard/signout"><i class="fa-solid fa-toggle-off"></i>خروج از سیستم</a></li>
+            }
+          
+         
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-5 mb-5">
+         @RenderBody()
+
+    </div>
+
+   
+   
+      
+    <!-- Internet Connection Status-->
+    <div class="internet-connection-status" id="internetStatus"></div>
+    <!-- Footer Nav-->
+    <div class="footer-nav-area" id="footerNav">
+      <div class="suha-footer-nav">
+        <ul class="h-100 d-flex align-items-center justify-content-between ps-0 d-flex rtl-flex-d-row-r">
+           <li><a href="/"><i class="fa-solid fa-house"></i>خانه</a></li>
+          <li><a href="/client/product/cart"><i class="fa-solid fa-bag-shopping"></i>سبد خرید</a></li>
+          <li><a href="pages.html"><i class="fa-solid fa-heart"></i>صفحات</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- All JavaScript Files-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/waypoints.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/jquery.passwordstrength.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/theme-switching.js"></script>
+    <script src="/js/no-internet.js"></script>
+    <script src="/js/active.js"></script>
+    <script src="/js/CheckInput.js"></script>
+    @RenderSection("Script", required: false)
+
+  
+   
+
+
+  </body>
+
+</html>

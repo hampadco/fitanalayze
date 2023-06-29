@@ -1,0 +1,33 @@
+
+<div class="CardCenter">
+    @*  TempData["success"] *@
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["success"]
+        </div>
+    }
+
+    @* TempData["error"] *@
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["error"]
+        </div>
+    }
+
+
+    <form action="/client/login/ResetPassword" method="post" onsubmit="return validateForm()">
+        <input name="email" type="text" class="form-control" placeholder=" (آدرس ایمیل)"
+            required>
+        
+        <button type="submit" class="form-control btn btn-success mt-3 ">
+           ارسال کد فعال سازی
+            </button>
+    </form>
+   
+
+
+</div>
+
+

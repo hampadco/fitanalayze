@@ -1,0 +1,103 @@
+<div class="CardCenter2">
+
+<div class="container mt-5" style="white-space: nowrap;overflow-x: scroll;">
+        <h1>Shopping Cart</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">عکس</th>
+                    <th scope="col">نام محصول</th>
+                    <th scope="col">تعداد</th>
+                    <th scope="col">قیمت واحد</th>
+                    <th scope="col">قیمت کل</th>
+                    <th scope="col">عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="/img/product/18.png" alt=""></td>
+                    <td>Product 1</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger mr-2">-</button>
+                        <span>1</span>
+                        <button class="btn btn-sm btn-success ml-2">+</button>
+                    </td>
+                    <td>10.00</td>
+                    <td>10.00</td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+                <tr>
+                    <td><img src="/img/product/18.png" alt=""></td>
+                    <td>Product 2</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger mr-2">-</button>
+                        <span>1</span>
+                        <button class="btn btn-sm btn-success ml-2">+</button>
+                    </td>
+                    <td>20.00</td>
+                    <td>20.00</td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+                <tr>
+                    <td><img src="/img/product/18.png" alt=""></td>
+                    <td>Product 3</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger mr-2">-</button>
+                        <span>1</span>
+                        <button class="btn btn-sm btn-success ml-2">+</button>
+                    </td>
+                    <td>30.00</td>
+                    <td>30.00</td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="mt-3 text-bg-secondary p-1">جمع کل : 30.000 تومان</p>
+
+    <button class="mt-3 form-control btn btn-warning">پرداخت نهایی </button>
+
+
+</div>
+
+
+<script>
+    // Get all the + and - buttons
+    var plusButtons = document.querySelectorAll('.btn-success');
+    var minusButtons = document.querySelectorAll('.btn-danger');
+
+    // Loop through each + button and add a click event listener
+    for (var i = 0; i < plusButtons.length; i++) {
+        plusButtons[i].addEventListener('click', function() {
+            // Get the current value of the quantity span and convert it to an integer
+            var currentQuantity = parseInt(this.parentNode.querySelector('span').textContent);
+            // Increment the quantity by 1 and update the span text
+            this.parentNode.querySelector('span').textContent = currentQuantity + 1;
+            // Get the unit price from the previous sibling element and convert it to a float
+            var unitPrice = parseFloat(this.parentNode.previousElementSibling.textContent);
+            // Calculate the total price by multiplying the quantity and unit price
+            var totalPrice = (currentQuantity + 1) * unitPrice;
+            // Update the total price cell with the new value
+            this.parentNode.nextElementSibling.textContent = totalPrice.toFixed(2);
+        });
+    }
+
+    // Loop through each - button and add a click event listener
+    for (var i = 0; i < minusButtons.length; i++) {
+        minusButtons[i].addEventListener('click', function() {
+            // Get the current value of the quantity span and convert it to an integer
+            var currentQuantity = parseInt(this.parentNode.querySelector('span').textContent);
+            // Decrement the quantity by 1 if it's greater than 1, else do nothing
+            if (currentQuantity > 1) {
+                this.parentNode.querySelector('span').textContent = currentQuantity - 1;
+                // Get the unit price from the previous sibling element and convert it to a float
+                var unitPrice = parseFloat(this.parentNode.previousElementSibling.textContent);
+                // Calculate the total price by multiplying the quantity and unit price
+                var totalPrice = (currentQuantity - 1) * unitPrice;
+                // Update the total price cell with the new value
+                this.parentNode.nextElementSibling.textContent = totalPrice.toFixed(2);
+            }
+        });
+    }
+</script>

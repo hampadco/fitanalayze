@@ -1,0 +1,29 @@
+
+<div class="CardCenter">
+
+    @* TempData["error"] *@
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["error"]
+        </div>
+    }
+
+    <form action="/client/login/signin" method="post" onsubmit="return validateForm()">
+        <input name="email" type="text" class="form-control" placeholder=" نام کاربری (آدرس ایمیل)"
+            required>
+        <input name="password" type="password" class="form-control mt-3" placeholder="رمز عبور"
+            required>
+        <button type="submit" class="form-control btn btn-success mt-3 ">ورود به
+            حساب کاربری</button>
+    </form>
+    <a href="/client/login/forget" class="form-control btn btn-link mt-3 "> فراموشی رمز عبور</a>
+
+    <a href="/client/login/register"  class="form-control btn btn-dark mt-3 pt-3 ">ساخت حساب
+        کاربری</a>
+
+
+
+</div>
+
+
